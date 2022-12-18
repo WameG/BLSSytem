@@ -1,0 +1,38 @@
+﻿@page
+@model Boglistesystem.Pages.KoordinatorPage.HoldPage.UpdateHoldModel
+@{
+    ViewData["Titel"] = "Update Hold";
+}
+
+<div class="custom-container">
+    <div class="custom-form">
+        <h1 class="fw-light">Opret Hold</h1>
+        <p class="lead text-muted">Du kan som koordinator indtaste dit navn og finde det hold du er tilknyttet til og registrere de relevante bøger som de forskellige hold skal have.</p>
+        <form method="post">
+            <div asp-validation-summary=" ModelOnly" class=" text-danger">
+            </div>
+            <input hidden asp-for="@Model.Hold.Hold_id" class="form-control" />
+            <div class="form-floating mb-2">
+                <input asp-for="@Model.Hold.Navn" class="form-control" />
+                <label asp-for="@Model.Hold.Navn " class=" control_label"></label>
+                <span asp-validation-for="@Model.Hold.Navn " class=" text-danger"></span>
+            </div>
+            <input hidden asp-for="@Model.Hold.Koordinator_id" class="form-control" />
+            <select asp-for="@Model.Hold.Uddannelse_id" asp-items="@Model.UddannelseList" class="form-select" style="height: 58px; margin-bottom: 10px">
+                <option value="">Uddannelse</option>
+            </select>
+            <select asp-for="@Model.Hold.Semestre_id" asp-items="@Model.SemestreList" class="form-select" style="height: 58px; margin-bottom: 10px">
+                <option value="">Semestre</option>
+            </select>
+            <select asp-for="@Model.Hold.Fag_id" asp-items="@Model.FagList" class="form-select" style="height: 58px; margin-bottom: 10px">
+                <option value="">Fag</option>
+            </select>
+            <select asp-for="@Model.Hold.Underviser_id" asp-items="@Model.UnderviserList" class="form-select" style="height: 58px; margin-bottom: 10px">
+                <option value="">Underviser</option>
+            </select>
+            <div class="form-group">
+                <input type="submit" value="Opret ny hold" class="w-100 btn btn-lg btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>

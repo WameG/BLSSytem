@@ -1,0 +1,48 @@
+﻿@page
+@model Boglistesystem.Pages.UnderviserPage.BogPage.CreateBogModel
+@{
+}
+
+<div class="custom-container">
+    <div class="custom-form">
+        <h1 class="fw-light">Opret Bog</h1>
+        <p class="lead text-muted">Du kan som koordinator indtaste dit navn og finde det hold du er tilknyttet til og registrere de relevante bøger som de forskellige hold skal have.</p>
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary=" ModelOnly" class=" text-danger">
+            </div>
+            <div class="form-floating mb-2">
+                <input type="number" asp-for="@Model.Bog.Bog_id" class="form-control" />
+                <label asp-for="@Model.Bog.Bog_id" class=" control_label"></label>
+                <span asp-validation-for="@Model.Bog.Bog_id" class=" text-danger"></span>
+            </div>
+            <div class="form-floating mb-2">
+                <input asp-for="@Model.Bog.Titel" class="form-control" />
+                <label asp-for="@Model.Bog.Titel" class=" control_label"></label>
+                <span asp-validation-for="@Model.Bog.Titel" class=" text-danger"></span>
+            </div>
+            <div class="form-floating mb-2">
+                <input asp-for="@Model.Bog.Forfatter" class="form-control" />
+                <label asp-for="@Model.Bog.Forfatter" class=" control_label"></label>
+                <span asp-validation-for="@Model.Bog.Forfatter" class=" text-danger"></span>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="number" asp-for="@Model.Bog.Udgivelsesår" class="form-control" />
+                <label asp-for="@Model.Bog.Udgivelsesår" class=" control_label"></label>
+                <span asp-validation-for="@Model.Bog.Udgivelsesår" class=" text-danger"></span>
+            </div>
+            <div class="form-floating mb-2">
+                <input type="number" asp-for="@Model.Bog.ISBN" class="form-control" />
+                <label asp-for="@Model.Bog.ISBN" class=" control_label"></label>
+                <span asp-validation-for="@Model.Bog.ISBN" class=" text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label asp-for="@Model.Bog.Billede " class=" control_label"></label>
+                <input type="file" name="file" class="form-control" />
+                @*<span asp-validation-for="@Model.Bog.Billede " class=" text-danger"></span>*@
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Opret ny bog" class="w-100 btn btn-lg btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>

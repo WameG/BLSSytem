@@ -1,0 +1,29 @@
+﻿@page
+@model Boglistesystem.Pages.KoordinatorPage.SemestrePage.CreateSemestreModel
+@{
+    ViewData["Titel"] = "Opret Semestre";
+}
+
+<div class="custom-container">
+    <div class="custom-form">
+            <h1 class="fw-light">Opret Uddannelse</h1>
+            <p class="lead text-muted">Du kan som koordinator indtaste dit navn og finde det hold du er tilknyttet til og registrere de relevante bøger som de forskellige hold skal have.</p>
+        <form method="post">
+            <div asp-validation-summary=" ModelOnly" class=" text-danger">
+           </div>
+            <div class="form-floating mb-2">
+                <input asp-for="@Model.Semestre.Semestre_id" class="form-control" />
+                <label asp-for="@Model.Semestre.Semestre_id" class=" control_label"></label>
+                <span asp-validation-for="@Model.Semestre.Semestre_id" class=" text-danger"></span>
+            </div>
+            <div class="form-floating mb-2">
+                <input asp-for="@Model.Semestre.Navn" class="form-control" />
+                <label asp-for="@Model.Semestre.Navn" class=" control_label"></label>
+                <span asp-validation-for="@Model.Semestre.Navn" class=" text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Opret ny uddannelse" class="w-100 btn btn-lg btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>

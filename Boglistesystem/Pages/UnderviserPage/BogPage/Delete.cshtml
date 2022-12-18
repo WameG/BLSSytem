@@ -1,0 +1,17 @@
+﻿@page
+@model Boglistesystem.Pages.UnderviserPage.BogPage.DeleteBogModel
+@{
+}
+
+<section class="py-5 text-center custom-container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Godkendelse Af Sletning</h1>
+            <p class="lead text-muted">Er du sikker på at du vil slette denne bog (@Model.Bog.Titel)</p>
+            <form method="post">
+                <input type="submit" value="Yes" class="btn btn-success" />
+                <a asp-page="/UnderviserPage/BogPage/Index" class="btn btn-danger">No</a>
+            </form>
+        </div>
+    </div>
+</section>

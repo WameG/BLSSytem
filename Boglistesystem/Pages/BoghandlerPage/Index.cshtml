@@ -1,0 +1,37 @@
+﻿@page
+@model Boglistesystem.Pages.Boghandler.IndexModel
+@{
+}
+
+<div class="custom-container">
+    <div class="custom-form-2">
+        <h1 class="fw-light" style="text-align: center">Boghandler</h1>
+        <p class="lead text-muted" style="text-align: center">På denne side kan man se de forskellige bøger der er tilkyttet de forskellige hold og se hvilken underviser som har har registreret bøgerne til holdene.</a></p>
+        @*<a asp-page="Create" class="w-100 btn btn-lg btn-dark">Opret Underviser</a>*@
+    </div>
+    <div class="container" style="width: 800px; margin: auto">
+        <div class="row g-3 justify-content-center px-10">
+            <table class="table border bg-white w-100">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Underviser</th>
+                        <th scope="col">Hold</th>
+                        <th scope="col">Bog</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Item in @Model.BogHolds)
+                    {
+                        <tr>
+                            <td class="block">@Item.BogHold_id</td>
+                            <td class="block">@Item.Hold.Underviser.Navn (@Item.Hold.Fag.Fag_navn)</td>
+                            <td class="block">@Item.Hold.Navn (@Item.Hold.Uddannelse.Uddannelse_navn)</td>
+                            <td class="block">@Item.Bog.Titel</td>                         
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
