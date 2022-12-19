@@ -7,13 +7,16 @@
     <div class="custom-form">
         <h1 class="fw-light">Underviser</h1>
         <p class="lead text-muted">Indtast dit navn for at se de hold du tilknyttet til.</p>
+        @if (Model.ErrorMessage != null)
+        {
+            <span class="btn btn-danger" style="width: 500px; margin-bottom: 20px;">@Model.ErrorMessage</span>
+        }
         <form method="post">
             <div asp-validation-summary=" ModelOnly" class=" text-danger">
             </div>
             <div class="form-floating mb-2">
                 <input asp-for="@Model.Underviser.Navn " class="form-control" />
                 <label asp-for="@Model.Underviser.Navn " class=" control_label"></label>
-                <span class=" text-danger">@Model.ErrorMessage</span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Se Hold" class="w-100 btn btn-lg btn-dark" />

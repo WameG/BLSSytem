@@ -4,11 +4,14 @@
 }
 
 <section class="py-5 text-center custom-container">
+    @if (Model.ErrorMessage != null)
+    {
+        <span class="btn btn-danger" style="width: 600px; margin-bottom: -70px">@Model.ErrorMessage</span>
+    }
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Godkendelse Af Sletning</h1>
             <p class="lead text-muted">Er du sikker på at du vil slette denne bog (@Model.Bog.Titel)</p>
-            <span class="text-danger">@Model.ErrorMessage</span>
             <form method="post">
                 <input type="submit" value="Ja" class="btn btn-success" />
                 <a asp-page="/UnderviserPage/BogPage/Index" class="btn btn-danger">Nej</a>

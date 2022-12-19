@@ -10,7 +10,7 @@
             <p class="lead text-muted">Er du sikker på at du vil slette dette hold (Navn: @Model.Hold.Navn, Uddannelse: @Model.Hold.Uddannelse_id)</p>
             <form method="post">
                 <input type="submit" value="Ja" class="btn btn-success" />
-                <a class="btn btn-danger">Nej</a>
+                <a asp-page="/KoordinatorPage/HoldPage/Index" class="btn btn-danger">Nej</a>
             </form>
         </div>
     </div>

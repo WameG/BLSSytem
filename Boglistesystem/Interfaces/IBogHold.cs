@@ -7,7 +7,7 @@ namespace Boglistesystem.Interfaces
 {
     public interface IBogHold
     {
-        public IEnumerable<BogHold> GetBogHold();
+        public IEnumerable<BogHold> GetBogHold(string FilterHold, string FilterTitle);
 
         public IEnumerable<SelectListItem> GetSelectListItems();
 

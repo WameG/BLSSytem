@@ -11,17 +11,17 @@
             <div asp-validation-summary=" ModelOnly" class=" text-danger">
            </div>
             <div class="form-floating mb-2">
-                <input asp-for="@Model.Underviser.Navn" class="form-control" />
+                <input asp-for="@Model.Underviser.Navn" class="form-control" required />
                 <label asp-for="@Model.Underviser.Navn " class=" control_label"></label>
                 <span asp-validation-for="@Model.Underviser.Navn " class=" text-danger"></span>
             </div>
             <div class="form-floating mb-2">
-                <input asp-for="@Model.Underviser.Initialer" class="form-control" />
+                <input asp-for="@Model.Underviser.Initialer" class="form-control" required/>
                 <label asp-for="@Model.Underviser.Initialer" class=" control_label"></label>
                 <span asp-validation-for="@Model.Underviser.Initialer" class=" text-danger"></span>
             </div>
             <div class="form-floating mb-2">
-                <input asp-for="@Model.Underviser.Koordinator_id" class="form-control" />
+                <input asp-for="@Model.Underviser.Koordinator_id" class="form-control" required />
                 <label asp-for="@Model.Underviser.Koordinator_id" class=" control_label"></label>
                 <span asp-validation-for="@Model.Underviser.Koordinator_id" class=" text-danger"></span>
             </div>

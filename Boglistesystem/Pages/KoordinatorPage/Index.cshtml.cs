@@ -24,7 +24,7 @@ namespace Boglistesystem.Pages
         {
             foreach (var item in service.GetKoordinators())
             {
-                if (Koordinator.Navn == item.Navn)
+                if (Koordinator.Navn.ToLower() == item.Navn.ToLower())
                 {
                     return RedirectToPage("/KoordinatorPage/Admin");
 

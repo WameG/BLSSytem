@@ -10,6 +10,7 @@ namespace Boglistesystem.Pages.KoordinatorPage.UnderviserPage
         private IUnderviseService service;
         [BindProperty]
         public Underviser underviser { get; set; }
+        public string ErrorMessage { get; set; }
         public DeleteUnderviserModel(IUnderviseService service)
         {
             this.service = service;
@@ -22,10 +23,17 @@ namespace Boglistesystem.Pages.KoordinatorPage.UnderviserPage
 
         public IActionResult OnPost(int id)
         {
-
-            this.service.DeleteUnderviser(id);
-            return RedirectToPage("/KoordinatorPage/UnderviserPage/Index");
-
+            try
+            {
+                this.service.DeleteUnderviser(id);
+                return RedirectToPage("/KoordinatorPage/UnderviserPage/Index");
+            }
+            catch
+            {
+                underviser = service.GetUnderviserId(id);
+                ErrorMessage = "Du skal først fjerne underviseren fra det tilkynttet hold før du kan slette underviser.";
+                return Page();
+            }
         }
     }
 }

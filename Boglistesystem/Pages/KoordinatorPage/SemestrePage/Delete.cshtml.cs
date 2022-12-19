@@ -10,6 +10,7 @@ namespace Boglistesystem.Pages.KoordinatorPage.SemestrePage
         private ISemestreService service;
         [BindProperty]
         public Semestre semestre { get; set; }
+        public string ErrorMessage { get; set; }
         public DeleteSemestreModel(ISemestreService service)
         {
             this.service = service;
@@ -22,9 +23,18 @@ namespace Boglistesystem.Pages.KoordinatorPage.SemestrePage
 
         public IActionResult OnPost(int id)
         {
-
+            try
+            {
             this.service.DeleteSemestre(id);
             return RedirectToPage("/KoordinatorPage/SemestrePage/Index");
+            }
+            catch
+            {
+                semestre = service.GetSemestreById(id);
+                ErrorMessage = "Du skal først fjerne semester fra det tilkynttet hold før du kan slette semesteret.";
+                return Page();
+            }
+
 
         }
     }

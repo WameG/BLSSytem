@@ -6,7 +6,7 @@
 
 <div class="custom-container">
     <div class="custom-form">
-        <h1 class="fw-light" style="text-align: center; margin-bottom: 20px">Opdater Koordinator</h1>
+        <h1 class="fw-light" style="text-align: center; margin-bottom: 20px">Opdater Underviser</h1>
         @*<p class="lead text-muted">Opdater </p>*@
         <form method="post">
             <div asp-validation-summary=" ModelOnly" class=" text-danger">
@@ -24,7 +24,7 @@
             </div>
                 <input hidden asp-for="@Model.underviser.Koordinator_id" class="form-control" />
             <div class="form-group">
-                <input type="submit" value="Rediger underviser" class="w-100 btn btn-lg btn-dark" />
+                <input type="submit" value="Gem Ændring" class="w-100 btn btn-lg btn-dark" />
             </div>
         </form>
     </div>

@@ -4,13 +4,17 @@
 }
 
 <section class="py-5 text-center custom-container">
+    @if (Model.ErrorMessage != null)
+    {
+        <span class="btn btn-danger" style="width: 650px; margin-bottom: -70px">@Model.ErrorMessage</span>
+    }
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Godkendelse Af Sletning</h1>
             <p class="lead text-muted">Er du sikker på at du vil slette denne uddannelse (@Model.uddannelse.Uddannelse_navn)</p>
             <form method="post">
                 <input type="submit" value="Ja" class="btn btn-success" />
-                <a class="btn btn-danger">Nej</a>
+                <a asp-page="/KoordinatorPage/UddannelsePage/Index" class="btn btn-danger">Nej</a>
             </form>
         </div>
     </div>

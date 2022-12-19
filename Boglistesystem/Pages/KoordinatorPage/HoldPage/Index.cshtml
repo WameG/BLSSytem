@@ -17,7 +17,7 @@
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
                             </svg>
-                            <span>Opret Ny Underviser</span>
+                            <span>Opret Ny Hold</span>
                         </a>
                         <a class="btn btn-primary" asp-page="/KoordinatorPage/Admin">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
@@ -33,8 +33,8 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Underviser</th>
                         <th scope="col">Navn</th>
+                        <th scope="col">Underviser</th>
                         <th scope="col">Uddannelse</th>
                         <th scope="col">Semester</th>
                         <th scope="col">Fag</th>
@@ -45,12 +45,37 @@
                     @foreach (var Item in @Model.holds)
                     {
                         <tr>
-                            <th scope="row">@Item.Hold_id</th>
-                            <td class="block">@Item.Underviser.Navn</td>
-                            <th scope="row">@Item.Navn</th>
-                            <th scope="row">@Item.Uddannelse.Uddannelse_navn</th>
-                            <th scope="row">@Item.Semestre.Navn</th>
-                            <th scope="row">@Item.Fag.Fag_navn</th>
+                            <td scope="row">@Item.Hold_id</td>
+                            <td scope="row">@Item.Navn</td>
+                            @if (Item.Underviser != null)
+                            {
+                                <td class="block">@Item.Underviser.Navn</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+
+                            @if (Item.Uddannelse != null)
+                            {
+                                <th scope="row">@Item.Uddannelse.Uddannelse_navn</th>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            @if (Item.Semestre != null)
+                            {
+                                <td scope="row">@Item.Semestre.Navn</td>
+                            }
+                            else
+                            {
+                                <td></td>
+                            }
+                            @if (Item.Fag != null)
+                            {
+                                <td scope="row">@Item.Fag.Fag_navn</td>
+                            }
                             <td style="width: 100px">
                                 <a class="btn btn-sm btn-warning text-light" asp-page="/KoordinatorPage/HoldPage/Update" asp-route-id="@Item.Hold_id">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">

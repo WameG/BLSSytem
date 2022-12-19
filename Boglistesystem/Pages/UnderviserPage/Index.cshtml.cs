@@ -25,7 +25,7 @@ namespace Boglistesystem.Pages.UnderviserPage
 
             foreach (var item in service.GetUndervisers())
             {
-                if (Underviser.Navn == item.Navn)
+                if (Underviser.Navn.ToLower() == item.Navn.ToLower())
                 {
                     return RedirectToPage("/UnderviserPage/GetHold/Index", new { navn = Underviser.Navn });
 

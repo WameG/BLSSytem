@@ -17,17 +17,6 @@ namespace Boglistesystem.Services
         {
             this.context = context;
         }
-        public IEnumerable<BogHold> GetBogHold()
-        {
-            var bogholds = context.BogHolds
-                 .Include(bh => bh.Bog)
-                 .Include(bh => bh.Hold.Uddannelse)
-                 .Include(bh => bh.Hold.Fag)
-                 .Include(bh => bh.Hold.Underviser)
-                 .Include(bh => bh.Hold.Semestre)
-                 .AsNoTracking();
-            return bogholds;
-        }
 
         public IEnumerable<SelectListItem> GetSelectListItems()
         {
@@ -47,9 +36,9 @@ namespace Boglistesystem.Services
 
             foreach (var item in context.BogHolds.Include(bh => bh.Bog))
             {
-                if(holdId == item.Hold_id)
+                if (holdId == item.Hold_id)
                 {
-                List.Add(new SelectListItem { Text = item.Bog.Titel, Value = item.Bog_id.ToString() });
+                    List.Add(new SelectListItem { Text = item.Bog.Titel, Value = item.Bog_id.ToString() });
                 }
             };
 
@@ -78,6 +67,35 @@ namespace Boglistesystem.Services
             IEnumerable<BogHold> bogHold = GetBogHoldByHoldIdAndBogID(holdId, bogId);
             context.BogHolds.Remove(bogHold.First());
             context.SaveChanges(true);
+        }
+
+        public IEnumerable<BogHold> GetBogHold(string FilterHold, string FilterTitle)
+        {
+            IEnumerable<BogHold> resulat = context.BogHolds
+                .Include(bh => bh.Bog)
+                .Include(bh => bh.Hold.Uddannelse)
+                .Include(bh => bh.Hold.Fag)
+                .Include(bh => bh.Hold.Underviser)
+                .AsNoTracking();
+
+
+            if (FilterHold != null && FilterTitle != null)
+            {
+                FilterHold = FilterHold.Replace("(", "").Replace(")", "");
+                resulat = resulat.Where(r => r.Bog.Titel.ToLower().StartsWith(FilterTitle.ToLower()) && $"{r.Hold.Navn.ToLower()} ({r.Hold.Uddannelse.Uddannelse_navn.ToLower()})".Contains(FilterHold.ToLower()));
+            }
+
+            if (FilterHold != null && FilterTitle == null)
+            {
+                resulat = resulat.Where(r => $"{r.Hold.Navn.ToLower()} ({r.Hold.Uddannelse.Uddannelse_navn.ToLower()})".Contains(FilterHold.ToLower()));
+            }
+
+            if (FilterHold == null && FilterTitle != null)
+            {
+                resulat = resulat.Where(r => r.Bog.Titel.ToLower().StartsWith(FilterTitle.ToLower()));
+            }
+
+            return resulat;
         }
     }
 }
