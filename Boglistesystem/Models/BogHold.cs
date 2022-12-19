@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Boglistesystem.Models
 {
@@ -18,10 +19,10 @@ namespace Boglistesystem.Models
         [Column("Hold_id")]
         public int Hold_id { get; set; }
 
-        [ForeignKey(nameof(Bog_id))]
+        [ForeignKey("Bog_id")]
         [InverseProperty("BogHolds")]
         public virtual Bog Bog { get; set; }
-        [ForeignKey(nameof(Hold_id))]
+        [ForeignKey("Hold_id")]
         [InverseProperty("BogHolds")]
         public virtual Hold Hold { get; set; }
     }

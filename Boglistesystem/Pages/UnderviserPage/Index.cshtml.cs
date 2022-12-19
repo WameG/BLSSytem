@@ -30,8 +30,8 @@ namespace Boglistesystem.Pages.UnderviserPage
                     return RedirectToPage("/UnderviserPage/GetHold/Index", new { navn = Underviser.Navn });
 
                 }
-                ErrorMessage = "Der findes ikke nogen Underviser med dette navn!";
             }
+                ErrorMessage = "Der findes ikke nogen Underviser med dette navn!";
             return Page();
         }
     }

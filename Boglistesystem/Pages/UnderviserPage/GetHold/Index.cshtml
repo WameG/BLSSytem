@@ -1,26 +1,44 @@
-﻿@page "{navn}"
+﻿@page
 @model Boglistesystem.Pages.UnderviserPage.GetHold.IndexModel
 @{
 }
 
 <div class="custom-container">
-    <div class="custom-form-2">
-        <h1 class="fw-light" style="text-align: center">Registrer Bøger Til Hold</h1>
-        <p class="lead text-muted" style="text-align: center">Her kan du som underviser registrere bøger til de enkelte hold. <a asp-page="/UnderviserPage/BogPage/Create" class="">Se alle bøger</a>.</p>
-        @*<a asp-page="Create" class="w-100 btn btn-lg btn-dark">Opret Underviser</a>*@
-    </div>
-    <div class="container" style="width: 800px; margin: auto">
-        <div class="row g-3 justify-content-center px-10">
-            <table class="table border bg-white w-100">
-                <thead class="table-dark">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="fw-light">Registre Bog Til Hold</h1>
+                    </div>
+                    <div class="col-sm-6 d-flex flex-row-reverse" style="margin: auto">
+                        <a class="btn btn-secondary" asp-page="/UnderviserPage/BogPage/Index" asp-route-navn="@Model.Navn" style="margin-left: 10px">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book-fill" viewBox="0 0 16 16">
+                                <path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z" />
+                            </svg>
+                            <span>Alle Bøger</span>
+                        </a>
+                        <a class="btn btn-primary" asp-page="/UnderviserPage/Index">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                            <span>Tilbage</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </div>
+            <table class="table bg-white w-100">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Navn</th>
                         <th scope="col">Uddannelse</th>
                         <th scope="col">Semester</th>
                         <th scope="col">Fag</th>
-                        <th scope="col">Underviser</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">Underviser
+                        <th scope="col">Handling</th>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,14 +51,16 @@
                             <td class="block">@Item.Semestre.Navn</td>
                             <td class="block">@Item.Fag.Fag_navn</td>
                             <td class="block">@Item.Underviser.Navn</td>
-                            <td>
-                                <a class="btn btn-sm btn-success" asp-page="/UnderviserPage/GetHold/AddBog" asp-route-id="@Item.Hold_id">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                            <td style="width: 100px">
+                                <a class="btn btn-sm btn-success text-light" asp-page="/UnderviserPage/GetHold/AddBog" asp-route-id="@Item.Hold_id" asp-route-navn="@Model.Navn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal-plus" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M8 5.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 .5-.5z" />
+                                        <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z" />
+                                        <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z" />
                                     </svg>
+                                    <div class="ripple-container"></div>
                                 </a>
-                                <a class="btn btn-sm btn-danger" asp-page="/KoordinatorPage/HoldPage/Delete" asp-route-id="@Item.Hold_id">
+                                <a class="btn btn-sm btn-danger" asp-page="/UnderviserPage/GetHold/DeleteBog" asp-route-id="@Item.Hold_id" asp-route-navn="@Model.Navn">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"></path>
                                     </svg>

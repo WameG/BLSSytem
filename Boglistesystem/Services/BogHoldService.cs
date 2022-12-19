@@ -29,7 +29,7 @@ namespace Boglistesystem.Services
             return bogholds;
         }
 
-        public IEnumerable<SelectListItem>? GetSelectListItems()
+        public IEnumerable<SelectListItem> GetSelectListItems()
         {
             List<SelectListItem> List = new List<SelectListItem>();
 
@@ -41,15 +41,30 @@ namespace Boglistesystem.Services
             return List;
         }
 
+        public IEnumerable<SelectListItem> GetBogHoldSelectListItems(int holdId)
+        {
+            List<SelectListItem> List = new List<SelectListItem>();
+
+            foreach (var item in context.BogHolds.Include(bh => bh.Bog))
+            {
+                if(holdId == item.Hold_id)
+                {
+                List.Add(new SelectListItem { Text = item.Bog.Titel, Value = item.Bog_id.ToString() });
+                }
+            };
+
+            return List;
+        }
+
         public void AddBogHold(BogHold bogHold)
         {
             context.BogHolds.Add(bogHold);
             context.SaveChanges();
         }
 
-        public BogHold GetBogHoldById(int id)
+        public IEnumerable<BogHold> GetBogHoldByHoldIdAndBogID(int holdId, int bogId)
         {
-            return context.BogHolds.Find(id);
+            return context.BogHolds.Where(x => x.Hold_id == holdId && x.Bog_id == bogId);
         }
 
         public void UpdateBogHold(BogHold bogHold)
@@ -58,10 +73,10 @@ namespace Boglistesystem.Services
             context.SaveChanges();
         }
 
-        public void DeleteBogHold(int id)
+        public void DeleteBogHold(int holdId, int bogId)
         {
-            BogHold bogHold = GetBogHoldById(id);
-            context.BogHolds.Remove(bogHold);
+            IEnumerable<BogHold> bogHold = GetBogHoldByHoldIdAndBogID(holdId, bogId);
+            context.BogHolds.Remove(bogHold.First());
             context.SaveChanges(true);
         }
     }

@@ -9,6 +9,8 @@ namespace Boglistesystem.Pages.UnderviserPage.GetHold
     {
         public IEnumerable<Hold> holds { get; set; }
 
+        public string Navn { get; set; }
+
         IHoldService service;
         public IndexModel(IHoldService service)
         {
@@ -17,6 +19,7 @@ namespace Boglistesystem.Pages.UnderviserPage.GetHold
         }
         public void OnGet(string navn)
         {
+            Navn = navn;
             holds = service.GetHoldByUnderviserNavn(navn);
         }
     }

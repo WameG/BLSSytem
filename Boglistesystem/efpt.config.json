@@ -1,0 +1,69 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "BLSystemContext",
+   "ContextNamespace": "Models",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": "Models",
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Boglistesystem",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Bog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BogHold]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Fag]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Hold]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Koordinator]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Semestre]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Uddannelse]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Underviser]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "(localdb)\\MSSQLLocalDB.BLSystem",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoConstructor": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

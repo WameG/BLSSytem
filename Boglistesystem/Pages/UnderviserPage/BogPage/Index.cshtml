@@ -4,41 +4,59 @@
 }
 
 <div class="custom-container">
-    <div class="custom-form-2">
-        <h1 class="fw-light" style="text-align: center">Bog</h1>
-        <p class="lead text-muted" style="text-align: center">Her er alle de bøger som en underviser kan tilføje til de enkelte hold. Derudover kan underviseren også oprette, opdatere eller slette enkelte bøger.  <a asp-page="/UnderviserPage/BogPage/CreateBog" class="">Opret Bog</a></p>
-        @*<a asp-page="Create" class="w-100 btn btn-lg btn-dark">Opret Underviser</a>*@
-    </div>
-    <div class="container" style="width: 800px; margin: auto">
-        <div class="row g-3 justify-content-center px-10">
-            <table class="table border bg-white w-100">
-                <thead class="table-dark">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h1 class="fw-light">Bog</h1>
+                    </div>
+                    <div class="col-sm-6 d-flex flex-row-reverse" style="margin: auto">
+                        <a class="btn btn-success" asp-page="/UnderviserPage/BogPage/Create" style="margin-left: 10px">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                            </svg>
+                            <span>Opret Ny Bog</span>
+                        </a>
+                        <a class="btn btn-primary" asp-page="/UnderviserPage/GetHold/Index" asp-route-navn="@Model.Navn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                            <span>Tilbage</span>
+                        </a>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </div>
+            <table class="table bg-white w-100">
+                <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Billede</th>
                         <th scope="col">Title</th>
                         <th scope="col">Forfatter</th>
-                        <th scope="col">Udgivelesår</th>
+                        <th scope="col">Udgivelsesår</th>
                         <th scope="col">ISBN</th>
-                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var Item in @Model.Bogs)
                     {
                         <tr>
-                            <td class="block">@Item.Bog_id</td>
+                            <th scope="row">@Item.Bog_id</th>
                             <td class="block"><img src="~/Image/@Item.Billede" width="65" height="65"></td>
                             <td class="block">@Item.Titel</td>
                             <td class="block">@Item.Forfatter</td>
                             <td class="block">@Item.Udgivelsesår</td>
                             <td class="block">@Item.ISBN</td>
-                            <td>
-                                <a class="btn btn-sm btn-success" asp-page="/UnderviserPage/BogPage/Update" asp-route-id="@Item.Bog_id">
+                            <td style="width: 100px">
+                                <a class="btn btn-sm btn-warning text-light" asp-page="/UnderviserPage/BogPage/Update" asp-route-id="@Item.Bog_id">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
                                     </svg>
+                                    <div class="ripple-container"></div>
                                 </a>
                                 <a class="btn btn-sm btn-danger" asp-page="/UnderviserPage/BogPage/Delete" asp-route-id="@Item.Bog_id">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">

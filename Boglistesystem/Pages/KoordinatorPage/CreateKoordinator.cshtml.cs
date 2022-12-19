@@ -27,7 +27,7 @@ namespace Boglistesystem.Pages.KoordinatorPage
                 return Page();
             }
             Service.AddKoordinator(Koordinator);
-            return RedirectToPage("KoordinatorPage");
+            return RedirectToPage("/KoordinatorPage/Index");
         }
     }
 }

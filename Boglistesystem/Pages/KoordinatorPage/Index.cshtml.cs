@@ -1,3 +1,4 @@
+using Boglistesystem.Interfaces;
 using Boglistesystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,14 +11,27 @@ namespace Boglistesystem.Pages
         [BindProperty]
         public Koordinator Koordinator { get; set; }
 
+        public string ErrorMessage { get; set; }
+
+        IKoordinatorService service;
+        public koordinatorModel(IKoordinatorService service)
+        {
+
+            this.service = service;
+        }
+
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
+            foreach (var item in service.GetKoordinators())
             {
-                return Page();
-            }
+                if (Koordinator.Navn == item.Navn)
+                {
+                    return RedirectToPage("/KoordinatorPage/Admin");
 
-            return RedirectToPage("Admin", new {navn = Koordinator.Navn });
+                }
+                ErrorMessage = "Der findes ikke nogen Koordinator med dette navn!";
+            }
+            return Page();
         }
     }
 }

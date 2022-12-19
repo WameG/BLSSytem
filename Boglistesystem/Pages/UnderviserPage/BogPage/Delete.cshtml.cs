@@ -10,6 +10,8 @@ namespace Boglistesystem.Pages.UnderviserPage.BogPage
         private IBogService service;
         [BindProperty]
         public Bog Bog { get; set; }
+
+        public string ErrorMessage { get; set; } 
         public DeleteBogModel(IBogService service)
         {
             this.service = service;
@@ -22,9 +24,19 @@ namespace Boglistesystem.Pages.UnderviserPage.BogPage
 
         public IActionResult OnPost(int id)
         {
+            Bog = service.GetBogById(id);
 
-            this.service.DeleteBog(id);
+            try
+            {
+            service.DeleteBog(id);
             return RedirectToPage("/UnderviserPage/BogPage/Index");
+            }
+            catch
+            {
+                ErrorMessage = "Du skal først fjerne bogen fra det tilkynttet hold før du kan slette bogen.";
+                
+                return Page();
+            }
 
         }
     }

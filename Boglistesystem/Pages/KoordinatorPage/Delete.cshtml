@@ -1,5 +1,5 @@
 ﻿@page
-@model Boglistesystem.Pages.KoordinatorPage.HoldPage.DeleteHoldModel
+@model Boglistesystem.Pages.KoordinatorPage.DeleteModel
 @{
 }
 
@@ -7,10 +7,10 @@
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Godkendelse Af Sletning</h1>
-            <p class="lead text-muted">Er du sikker på at du vil slette dette hold (Navn: @Model.Hold.Navn, Uddannelse: @Model.Hold.Uddannelse_id)</p>
+            <p class="lead text-muted">Er du sikker på at du vil slette denne Koordinator (@Model.Koordinator.Navn)</p>
             <form method="post">
                 <input type="submit" value="Ja" class="btn btn-success" />
-                <a class="btn btn-danger">Nej</a>
+                <a asp-page="/Koordinator/AlleKoordinator" class="btn btn-danger">Nej</a>
             </form>
         </div>
     </div>

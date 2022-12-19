@@ -9,14 +9,17 @@ namespace Boglistesystem.Pages.UnderviserPage.BogPage
     {
         public IEnumerable<Bog> Bogs { get; set; }
 
+        public string Navn { get; set; }
+
         IBogService service;
         public IndexModel(IBogService service)
         {
 
             this.service = service;
         }
-        public void OnGet()
+        public void OnGet(string navn)
         {
+            Navn = navn;
             Bogs = service.GetBogs();
         }
     }

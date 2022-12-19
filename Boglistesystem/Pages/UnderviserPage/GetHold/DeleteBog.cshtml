@@ -2,3 +2,24 @@
 @model Boglistesystem.Pages.UnderviserPage.GetHold.DeleteBogModel
 @{
 }
+
+<div class="custom-container">
+    <div class="custom-form">
+        <h1 class="fw-light">Fjern Bog fra Hold</h1>
+        <form method="post">
+            <div asp-validation-summary=" ModelOnly" class=" class=" invalid-feedback"">
+            </div>
+            <input hidden asp-for="@Model.BogHold.Hold_id" class="form-control" required />
+            <div class="form-floating mb-2">
+                <select asp-for="@Model.BogHold.Bog_id" asp-items="@Model.BogList" class="form-select" style="height: 58px; margin-bottom: 10px" required>
+                    <option value=""></option>
+                </select>
+                <span asp-validation-for="@Model.BogHold.Bog.Titel"  class="invalid-feedback"></span>
+                <label asp-for="@Model.BogHold.Bog.Titel" class=" control_label"></label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Gem Ændring" class="w-100 btn btn-lg btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>

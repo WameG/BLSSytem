@@ -30,11 +30,11 @@ namespace Boglistesystem.Pages.UnderviserPage.GetHold
             BogList = Service.GetSelectListItems();
         }
 
-        public IActionResult OnPost(int id)
+        public IActionResult OnPost(int id, string navn)
         {
             BogList = Service.GetSelectListItems();
             Service.AddBogHold(BogHold);
-            return RedirectToPage("/UnderviserPage/GetHold/Index");
+            return RedirectToPage("/UnderviserPage/GetHold/Index", new { navn = navn });
         }
     }
 }

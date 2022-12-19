@@ -22,10 +22,6 @@ namespace Boglistesystem.Pages.KoordinatorPage.UnderviserPage
         }
         public IActionResult OnPost()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
             Service.AddUnderviser(Underviser);
             return RedirectToPage("/KoordinatorPage/UnderviserPage/Index");
         }

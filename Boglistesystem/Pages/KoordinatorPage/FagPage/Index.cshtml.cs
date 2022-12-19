@@ -9,14 +9,17 @@ namespace Boglistesystem.Pages.KoordinatorPage
     {
         public IEnumerable<Fag> fags { get; set; }
 
+        public string Navn { get; set; }
+
         IFagService service;
         public FagModel(IFagService service)
         {
 
             this.service = service;
         }
-        public void OnGet()
+        public void OnGet(string navn)
         {
+            Navn = navn;
             fags = service.GetFags();
         }
     }

@@ -10,6 +10,8 @@ namespace Boglistesystem.Interfaces
         public void DeleteUddannelse(Uddannelse uddannelse);
         Uddannelse GetUddannelseById(int id);
         void DeleteUddannelse(int id);
+
+        void UpdateUddannelse(Uddannelse uddannelse);
     }
 
 }

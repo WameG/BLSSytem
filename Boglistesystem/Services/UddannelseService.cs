@@ -45,5 +45,11 @@ namespace Boglistesystem.Services
             context.Uddannelses.Remove(uddannelse);
             context.SaveChanges(true);
         }
+
+        public void UpdateUddannelse(Uddannelse uddannelse)
+        {
+            context.Uddannelses.Update(uddannelse);
+            context.SaveChanges();
+        }
     }
 }

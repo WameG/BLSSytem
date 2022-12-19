@@ -11,10 +11,12 @@ namespace Boglistesystem.Interfaces
 
         public IEnumerable<SelectListItem> GetSelectListItems();
 
+        public IEnumerable<SelectListItem> GetBogHoldSelectListItems(int holdId);
+
         void AddBogHold(BogHold bogHold);
-        BogHold GetBogHoldById(int id);
+        IEnumerable<BogHold> GetBogHoldByHoldIdAndBogID(int holdId, int bogId);
         void UpdateBogHold(BogHold bogHold);
         
-         void DeleteBogHold(int id);
+         void DeleteBogHold(int holdId, int bogId);
     }
 }

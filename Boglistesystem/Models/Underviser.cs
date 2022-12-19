@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace Boglistesystem.Models
 {
@@ -20,17 +21,19 @@ namespace Boglistesystem.Models
         public int Underviser_id { get; set; }
         [Required]
         [StringLength(30)]
+        [Unicode(false)]
         public string Navn { get; set; }
         [Required]
         [StringLength(10)]
+        [Unicode(false)]
         public string Initialer { get; set; }
         [Column("Koordinator_id")]
         public int? Koordinator_id { get; set; }
 
-        [ForeignKey(nameof(Koordinator_id))]
+        [ForeignKey("Koordinator_id")]
         [InverseProperty("Undervisers")]
         public virtual Koordinator Koordinator { get; set; }
-        [InverseProperty(nameof(Hold.Underviser))]
+        [InverseProperty("Underviser")]
         public virtual ICollection<Hold> Holds { get; set; }
     }
 }

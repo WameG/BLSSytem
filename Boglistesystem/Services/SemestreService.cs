@@ -46,5 +46,11 @@ namespace Boglistesystem.Services
             context.SaveChanges(true);
 
         }
+
+        public void UpdateSemestre(Semestre semestre)
+        {
+            context.Semestres.Update(semestre);
+            context.SaveChanges();
+        }
     }
 }

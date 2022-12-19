@@ -119,3 +119,26 @@ a {
     color: #212529;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
 }
+
+.table-responsive {
+    width: 1000px;
+    display: block;
+    overflow-x: unset;
+    margin: 100px auto;
+}
+
+.table-wrapper {
+    min-width: 1000px;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
+}
+
+.table-title {
+    color: #fff;
+    background: #212529;
+    padding: 16px 25px;
+    margin: -20px -25px 10px;
+    border-radius: 3px 3px 0 0;
+}
