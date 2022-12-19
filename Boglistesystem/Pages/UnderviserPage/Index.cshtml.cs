@@ -31,7 +31,7 @@ namespace Boglistesystem.Pages.UnderviserPage
 
                 }
             }
-                ErrorMessage = "Der findes ikke nogen Underviser med dette navn!";
+            ErrorMessage = "Der findes ikke nogen Underviser med dette navn!";
             return Page();
         }
     }
