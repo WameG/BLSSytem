@@ -22,14 +22,24 @@ namespace Boglistesystem.Pages
 
         public IActionResult OnPost()
         {
-            foreach (var item in service.GetKoordinators())
+            if (Koordinator.Navn == null)
             {
-                if (Koordinator.Navn.ToLower() == item.Navn.ToLower())
-                {
-                    return RedirectToPage("/KoordinatorPage/Admin");
+                ErrorMessage = "Indsat navn på underviser !";
+                return Page();
+            }
+            else
+            {
 
+
+                foreach (var item in service.GetKoordinators())
+                {
+                    if (Koordinator.Navn.ToLower() == item.Navn.ToLower())
+                    {
+                        return RedirectToPage("/KoordinatorPage/Admin");
+
+                    }
+                    ErrorMessage = "Der findes ikke nogen Koordinator med dette navn!";
                 }
-                ErrorMessage = "Der findes ikke nogen Koordinator med dette navn!";
             }
             return Page();
         }

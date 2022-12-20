@@ -21,14 +21,24 @@ namespace Boglistesystem.Pages.UnderviserPage
 
         public IActionResult OnPost()
         {
-
-
-            foreach (var item in service.GetUndervisers())
+            if (Underviser.Navn == null)
             {
-                if (Underviser.Navn.ToLower() == item.Navn.ToLower())
-                {
-                    return RedirectToPage("/UnderviserPage/GetHold/Index", new { navn = Underviser.Navn });
+                ErrorMessage = "Indsat navn på underviser !";
+                return Page();
+            }
+            else
+            {
 
+
+                foreach (var item in this.service.GetUndervisers())
+                {
+
+                    if (Underviser.Navn.ToLower() == item.Navn.ToLower())
+
+                    {
+                        return RedirectToPage("/UnderviserPage/GetHold/Index", new { navn = Underviser.Navn });
+
+                    }
                 }
             }
             ErrorMessage = "Der findes ikke nogen Underviser med dette navn!";

@@ -13,10 +13,10 @@ namespace Boglistesystem.Services
     public class HoldService : IHoldService
     {
         BLSystemContext context;
-        [BindProperty]
-        public Semestre semestre { get; set; }
-        [BindProperty]
-        public Uddannelse uddannelse { get; set; }
+        //[BindProperty]
+        //public Semestre semestre { get; set; }
+        //[BindProperty]
+        //public Uddannelse uddannelse { get; set; }
 
         public HoldService(BLSystemContext service)
         {
@@ -62,7 +62,7 @@ namespace Boglistesystem.Services
         public IEnumerable<Hold> GetHolds()
         {
 
-            // var holds = context.Holds.AsNoTracking();
+            
             var holds = context.Holds
                 .Include(h => h.Koordinator)
                 .Include(h => h.Uddannelse)
@@ -117,5 +117,7 @@ namespace Boglistesystem.Services
             context.Holds.Update(hold);
             context.SaveChanges();
         }
+
+      
     }
 }
