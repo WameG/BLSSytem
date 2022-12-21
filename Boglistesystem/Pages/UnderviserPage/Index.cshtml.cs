@@ -23,7 +23,7 @@ namespace Boglistesystem.Pages.UnderviserPage
         {
             if (Underviser.Navn == null)
             {
-                ErrorMessage = "Indsat navn på underviser !";
+                ErrorMessage = "Indtest navn på underviser !";
                 return Page();
             }
             else

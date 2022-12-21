@@ -24,7 +24,7 @@ namespace Boglistesystem.Pages
         {
             if (Koordinator.Navn == null)
             {
-                ErrorMessage = "Indsat navn på underviser !";
+                ErrorMessage = "Indtest dit fuld navn på koordinator !";
                 return Page();
             }
             else
