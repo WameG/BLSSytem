@@ -1,4 +1,8 @@
-﻿--CREATE TABLE Bog( Bog_id int NOT NULL PRIMARY KEY,Title VARCHAR (30) NOT NULL,Forfatter VARCHAR(30) NOT NULL, Udgivelsesår INT NOT NULL, ISBN FLOAT NOT NULL); 
---CREATE TABLE Underviser(Underviser_id int NOT NULL PRIMARY KEY, Navn VARCHAR(30) NOT NULL, Initialer VARCHAR(10) NOT NULL);
---CREATE TABLE Hold(Hold_id int NOT NULL PRIMARY KEY,Navn VARCHR(30) NOT NULL,Koordinator_id int NOT NULL FOREIGN KEY (Koordinator_id) REFERENCES Koordinator(Koordinator_id),Uddannelse_id int NOT NULL FOREIGN KEY(Uddannelse_id) REFERENCES Uddannelse (Uddannelse_id),Semestre_id int NOT NULL FOREIGN KEY(Semestre_id) REFERENCES Semestre (Semestre_id),Fag_id int NOT NULL FOREIGN KEY(Fag_id) REFERENCES Fag(Fag_id),Underviser_id int NOT NULL FOREIGN KEY(Underviser_id)REFERENCES Underviser(Underviser_id));
---CREATE TABLE Koordinnator(Koordinator_id int NOT NULL PRIMARY KEY, Navn VARCHAR(30) NOT NULL);
+﻿CREATE TABLE Bog( Bog_id int IDENTITY (1,1) NOT NULL  PRIMARY KEY,Title VARCHAR (30) NOT NULL,Forfatter VARCHAR(30) NOT NULL, Udgivelsesår INT NOT NULL, ISBN FLOAT NOT NULL, Billede VARCHAR (256) NOT NULL); 
+CREATE TABLE Underviser(Underviser_id int IDENTITY (1,1) NOT NULL PRIMARY KEY, Navn VARCHAR(30) NOT NULL, Initialer VARCHAR(10) NOT NULL);
+CREATE TABLE Hold(Hold_id int IDENTITY (1,1) NOT NULL PRIMARY KEY,Navn VARCHR(30) NOT NULL,Koordinator_id int NOT NULL FOREIGN KEY (Koordinator_id) REFERENCES Koordinator(Koordinator_id),Uddannelse_id int NOT NULL FOREIGN KEY(Uddannelse_id) REFERENCES Uddannelse (Uddannelse_id),Semestre_id int NOT NULL FOREIGN KEY(Semestre_id) REFERENCES Semestre (Semestre_id),Fag_id int NOT NULL FOREIGN KEY(Fag_id) REFERENCES Fag(Fag_id),Underviser_id int NOT NULL FOREIGN KEY(Underviser_id)REFERENCES Underviser(Underviser_id));
+CREATE TABLE Koordinnator(Koordinator_id int IDENTITY (1,1) NOT NULL PRIMARY KEY, Navn VARCHAR(30) NOT NULL);
+CREATE TABLE BogHold (BogHold_id int IDENTITY(1,1)  NOT NULL PRIMARY KEY, Bog_id int NOT NULL FOREIGN KEY (Bog_id) REFERENCES Bog (Bog_id), Hold_id int NOT NULL FOREIGN KEY (Hold_id) REFERENCES Hold (Hold_id));
+CREATE TABLE Semestre( Semestre_id int IDENTITY(1,1) NOT NULL PRIMARY KEY, Navn VARCHAR (50) NOT NULL);
+CREATE TABLE Fag ( Fag_id int IDENTITY(1,1) NOT NULL PRIMARY KEY, Fag_navn VARCHAR(50) NOT NULL);
+CREATE TABLE Uddannelse ( Uddannelse_id int IDENTITY(1,1) NOT NULL PRIMARY KEY, Uddannelse_navn VARCHAR(50) NOT NULL);
