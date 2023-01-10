@@ -15,7 +15,7 @@ namespace Boglistesystem.Interfaces
        
         void AddHold(Hold hold);
        
-        public void DeleteHold(Hold hold);
+      //  public void DeleteHold(Hold hold);
         Hold GetHoldById(int id);
         void UpdateHold(Hold hold);
         public void DeleteHold(int id);

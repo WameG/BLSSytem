@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Boglistesystem.Services
 {
-    public class BogHoldService : IBogHold
+    public class BogHoldService : IBogHoldService
     {
 
 
@@ -30,13 +30,13 @@ namespace Boglistesystem.Services
             return List;
         }
 
-        public IEnumerable<SelectListItem> GetBogHoldSelectListItems(int holdId)
+        public IEnumerable<SelectListItem> GetBogHoldSelectListItems(int hold_id)
         {
             List<SelectListItem> List = new List<SelectListItem>();
 
             foreach (var item in context.BogHolds.Include(bh => bh.Bog))
             {
-                if (holdId == item.Hold_id)
+                if (hold_id == item.Hold_id)
                 {
                     List.Add(new SelectListItem { Text = item.Bog.Titel, Value = item.Bog_id.ToString() });
                 }
@@ -51,9 +51,9 @@ namespace Boglistesystem.Services
             context.SaveChanges();
         }
 
-        public IEnumerable<BogHold> GetBogHoldByHoldIdAndBogID(int holdId, int bogId)
+        public IEnumerable<BogHold> GetBogHoldByHoldIdAndBogID(int hold_id, int bog_id)
         {
-            return context.BogHolds.Where(x => x.Hold_id == holdId && x.Bog_id == bogId);
+            return context.BogHolds.Where(x => x.Hold_id == hold_id && x.Bog_id == bog_id);
         }
 
         public void UpdateBogHold(BogHold bogHold)

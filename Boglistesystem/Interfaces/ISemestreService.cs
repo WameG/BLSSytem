@@ -10,7 +10,7 @@ namespace Boglistesystem.Interfaces
 
         void CreateSemestre(Semestre semestre);
         void DeleteSemestre (int id);
-        void DeleteSemestre (Semestre semestre);    
+          
         Semestre GetSemestreById (int id);
         void UpdateSemestre(Semestre semestre);
     }

@@ -27,8 +27,6 @@ namespace Boglistesystem.Services
             context.Bøger.Add(bog);
             context.SaveChanges();
         }
-
-
         public Bog GetBogById(int id)
         {
             return context.Bøger.Find(id);
@@ -41,15 +39,6 @@ namespace Boglistesystem.Services
             context.Bøger.Remove(Bog);
             context.SaveChanges(true);
         }
-
-
-        public void DeleteBog(Bog bog)
-        {
-
-            context.Bøger.Remove(bog);
-            context.SaveChanges(true);
-        }
-
         public void UpdateBog(Bog bog)
         {
             context.Bøger.Update(bog);

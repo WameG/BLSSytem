@@ -16,11 +16,9 @@ namespace BogListeTest
             BLSystemContext context = new BLSystemContext();
             BogServices bs = new BogServices(context);
             IEnumerable<Bog> Bøger = bs.GetBogs();
-            foreach (var b in Bøger)
-            {
-                Console.WriteLine("Bogen findes ikke !");
-            }
-
+           
+            Assert.IsNotNull(Bøger);
+            Assert.IsTrue(Bøger.Count() >= 1,"Bøger Skal være større end 1");
         }
 
         [TestMethod]
@@ -30,18 +28,17 @@ namespace BogListeTest
             HoldService hs = new HoldService(context);
 
             IEnumerable<Hold> holds = hs.GetHolds();
-
+            Assert.IsNotNull(holds);
+            Assert.IsTrue(holds.Count() >= 1, "Hold skal være større end 1 ");
         }
         [TestMethod]
         public void TestFag() {
             BLSystemContext context = new BLSystemContext();
             FagService fs = new FagService(context);
             IEnumerable<Fag> fags = fs.GetFags();
-            
-                foreach (Fag f in fags)
-                {
-                Console.WriteLine();
-                }
+
+            Assert.IsNotNull(fags);
+            Assert.IsTrue(fags.Count() > 1, "Fag skal være større end 1");
             
         }
         
@@ -51,10 +48,8 @@ namespace BogListeTest
             BLSystemContext context = new BLSystemContext();
             UnderviserService us = new UnderviserService(context);
             IEnumerable<Underviser> undervisers = us.GetUndervisers();
-            foreach(var u in undervisers)
-            {
-                Console.WriteLine();
-            }
+            Assert.IsNotNull(undervisers);
+            Assert.IsTrue(undervisers.Count() > 1, "Underviser skla være større end 1");
         }
 
     }

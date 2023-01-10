@@ -36,18 +36,9 @@ namespace Boglistesystem.Services
             context.SaveChanges();
         }
 
-
-        public void DeleteUnderviser(Underviser underviser) {
-            if (underviser != null)
-            {
-                context.Undervisers.Remove(underviser);
-            }
-        }
-
         public Underviser GetUnderviserId(int id) {
             return context.Undervisers.Find(id);
         }
-
         public void DeleteUnderviser(int id) {
             Underviser underviser = GetUnderviserId(id);
             context.Undervisers.Remove(underviser);

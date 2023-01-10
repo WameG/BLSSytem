@@ -35,7 +35,7 @@ namespace Boglistesystem
             services.AddTransient<ISemestreService, SemestreService>();
             services.AddTransient<IUddannelseService, UddannelseService>();
             services.AddTransient<IFagService, FagService>();
-            services.AddTransient<IBogHold, BogHoldService>();
+            services.AddTransient<IBogHoldService, BogHoldService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -24,16 +24,6 @@ namespace Boglistesystem.Services
             context.Semestres.Add(semestre);
             context.SaveChanges();
         }
-
-        public void DeleteSemestre(Semestre semestre)
-        {
-            if (semestre != null)
-            {
-                context.Semestres.Remove(semestre);
-            }
-        }
-
-        
         public Semestre GetSemestreById(int id)
         {
             return context.Semestres.Find(id);

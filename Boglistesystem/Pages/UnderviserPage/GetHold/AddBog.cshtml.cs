@@ -10,13 +10,13 @@ namespace Boglistesystem.Pages.UnderviserPage.GetHold
     {
         public IEnumerable<SelectListItem> BogList { get; set; }
 
-        IBogHold Service { get; set; }
+        IBogHoldService Service { get; set; }
 
         [BindProperty]
         public BogHold BogHold { get; set; }
  
 
-        public AddBogModel(IBogHold service)
+        public AddBogModel(IBogHoldService service)
         {
             Service = service;
         }

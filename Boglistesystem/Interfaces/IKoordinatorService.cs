@@ -14,7 +14,7 @@ namespace Boglistesystem.Interfaces
 
         void DeleteKoordinator(int id);
 
-        void DeleteKoordinator(Koordinator koordinnator);
+      
 
         void UpdateKoordinator(Koordinator koordinnator);
     }

@@ -19,6 +19,10 @@ namespace Boglistesystem.Services
             context.Fags.Add(fag);
             context.SaveChanges();
         }
+        public Fag GetFagById(int id)
+        {
+            return context.Fags.Find(id);
+        }
 
         public void DeleteFag(int id)
         {
@@ -31,21 +35,12 @@ namespace Boglistesystem.Services
         {
             return context.Fags;
         }
-        public Fag GetFagById(int id)
-        {
-            return context.Fags.Find(id);
-        }
+        
 
         public void UpdateFag(Fag fag)
         {
             context.Fags.Update(fag);
             context.SaveChanges();
-        }
-
-        public void DeleteFag(Fag fag)
-        {
-            context.Fags.Remove(fag);
-            context.SaveChanges(true);
         }
     }
 }

@@ -43,11 +43,5 @@ namespace Boglistesystem.Services
         {
             return context.Koordinators.Find(id);
         }
-
-        public void DeleteKoordinator(Koordinator koordinnator)
-        {
-            context.Koordinators.Remove(koordinnator);
-            context.SaveChanges(true);
-        }
     }
 }

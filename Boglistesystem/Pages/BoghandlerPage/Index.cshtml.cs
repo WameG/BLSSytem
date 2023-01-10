@@ -14,8 +14,8 @@ namespace Boglistesystem.Pages.Boghandler
         [BindProperty(SupportsGet = true)]
         public string FilterTitle { get; set; }
 
-        IBogHold service;
-        public IndexModel(IBogHold service)
+        IBogHoldService service;
+        public IndexModel(IBogHoldService service)
         {
 
             this.service = service;

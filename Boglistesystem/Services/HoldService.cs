@@ -13,10 +13,7 @@ namespace Boglistesystem.Services
     public class HoldService : IHoldService
     {
         BLSystemContext context;
-        //[BindProperty]
-        //public Semestre semestre { get; set; }
-        //[BindProperty]
-        //public Uddannelse uddannelse { get; set; }
+
 
         public HoldService(BLSystemContext service)
         {
@@ -36,20 +33,14 @@ namespace Boglistesystem.Services
             context.SaveChanges();
 
         }
-
-        public void DeleteHold(Hold hold)
-        {
-            context.Holds.Remove(hold);
-            context.SaveChanges();
-        }
-
-
-
         public Hold GetHoldById(int id)
         {
             return context.Holds.Find(id);
         }
 
+        //Lamda expression 
+        //parant obejkter som inholder mange fremmede nøgle
+        // Man skal passe på, når man bruge den . den er alle for tung metode
         public IEnumerable<Hold> GetHoldByUnderviserNavn(string navn)
         {
             return context.Holds.Include(h => h.Koordinator)
@@ -58,7 +49,9 @@ namespace Boglistesystem.Services
                 .Include(h => h.Fag)
                 .Include(h => h.Underviser).Where(item => item.Underviser.Navn.ToLower() == navn.ToLower());
         }
-
+        //Lamda expression 
+        //parant obejkter som inholder mange fremmede nøgle
+        // Man skal passe på, når man bruge den . den er alle for tung metode
         public IEnumerable<Hold> GetHolds()
         {
 
@@ -73,7 +66,7 @@ namespace Boglistesystem.Services
             return holds;
         }
 
-        public IEnumerable<SelectListItem>? GetSelectListItems(string name)
+        public IEnumerable<SelectListItem> GetSelectListItems(string name)
         {
             List<SelectListItem> List = new List<SelectListItem>();
 
@@ -106,7 +99,7 @@ namespace Boglistesystem.Services
                 foreach (var item in context.Undervisers)
                 {
                     List.Add(new SelectListItem { Text = item.Navn, Value = item.Underviser_id.ToString() });
-                };
+                }
             }
 
             return List;

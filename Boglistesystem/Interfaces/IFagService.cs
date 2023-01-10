@@ -8,12 +8,12 @@ namespace Boglistesystem.Interfaces
     {
         public IEnumerable<Fag> GetFags();
 
-        void CreateFag(Fag fag);
-        void DeleteFag(int id);
+        public void CreateFag(Fag fag);
+        public void DeleteFag(int id);
         Fag GetFagById(int id);
 
-        void UpdateFag(Fag fag);
+       public void UpdateFag(Fag fag);
 
-        void DeleteFag(Fag fag);
+        
     }
 }

@@ -9,8 +9,8 @@ namespace Boglistesystem.Interfaces
         
         void AddBog(Bog bog);
         Bog GetBogById(int id);
-        void DeleteBog(Bog bog);
-        void DeleteBog(int id);
+        
+        public void DeleteBog(int id);
         void UpdateBog(Bog bog);
         Task<string> UploadImage(IFormFile File);
 

@@ -11,11 +11,11 @@ namespace Boglistesystem.Interfaces
         
         void AddUnderviser(Underviser underviser);
 
-        public void DeleteUnderviser(Underviser underviser);
+       
         
         Underviser GetUnderviserId(int id);
         
-        void DeleteUnderviser(int id);
+       public void DeleteUnderviser(int id);
 
         void UpdateUnderviser(Underviser underviser);
     }

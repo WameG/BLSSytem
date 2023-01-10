@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Boglistesystem.Interfaces
 {
-    public interface IBogHold
+    public interface IBogHoldService
     {
         public IEnumerable<BogHold> GetBogHold(string FilterHold, string FilterTitle);
 

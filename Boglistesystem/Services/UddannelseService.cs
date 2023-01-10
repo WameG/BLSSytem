@@ -25,15 +25,6 @@ namespace Boglistesystem.Services
             context.Uddannelses.Add(uddannelse);
             context.SaveChanges();
         }
-
-        public void DeleteUddannelse(Uddannelse uddannelse)
-        {
-            if (uddannelse != null)
-            {
-                context.Uddannelses.Remove(uddannelse);
-            }
-        }
-
         public Uddannelse GetUddannelseById(int id)
         {
             return context.Uddannelses.Find(id);
